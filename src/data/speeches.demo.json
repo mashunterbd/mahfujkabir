@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "slug": "demo-speech-technology",
+    "title": {
+      "bn": "[ডেমো] তথ্যপ্রযুক্তির ভবিষ্যৎ",
+      "en": "[DEMO] Future of Technology"
+    },
+    "date": "2026-09-15",
+    "location": {
+      "bn": "ঢাকা প্রেস ক্লাব",
+      "en": "Dhaka Press Club"
+    },
+    "occasion": {
+      "bn": "প্রযুক্তি সম্মেলন ২০২৬",
+      "en": "Technology Conference 2026"
+    },
+    "category": {
+      "bn": "প্রযুক্তি",
+      "en": "Technology"
+    },
+    "summary": {
+      "bn": "এটি একটি ডেমো বক্তব্য। প্রকৃত বিষয়বস্তু মালিকের কাছ থেকে প্রয়োজন।",
+      "en": "This is a demo speech. Actual content needed from owner."
+    },
+    "body": {
+      "bn": "**[এটি শুধুমাত্র ডেমো বিষয়বস্তু - প্রোডাকশনে ব্যবহার করবেন না]**\n\nএই বক্তব্যে আলোচনা করা হয়েছে তথ্যপ্রযুক্তির ভবিষ্যৎ এবং বাংলাদেশে ডিজিটাল রূপান্তর সম্পর্কে।\n\nমূল পয়েন্ট:\n- ডিজিটাল বাংলাদেশের অগ্রগতি\n- যুব প্রজন্মের ভূমিকা\n- প্রযুক্তি শিক্ষার গুরুত্ব",
+      "en": "**[DEMO CONTENT ONLY - DO NOT USE IN PRODUCTION]**\n\nThis speech discusses the future of information technology and digital transformation in Bangladesh."
+    },
+    "videoId": "",
+    "image": "",
+    "pdfUrl": "",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "slug": "demo-speech-youth",
+    "title": {
+      "bn": "[ডেমো] তরুণদের শক্তি",
+      "en": "[DEMO] Power of Youth"
+    },
+    "date": "2026-08-20",
+    "location": {
+      "bn": "ঢাকা বিশ্ববিদ্যালয়",
+      "en": "Dhaka University"
+    },
+    "occasion": {
+      "bn": "যুব সম্মেলন",
+      "en": "Youth Summit"
+    },
+    "category": {
+      "bn": "যুব উন্নয়ন",
+      "en": "Youth Development"
+    },
+    "summary": {
+      "bn": "ডেমো বক্তব্য - তরুণদের ভূমিকা এবং নেতৃত্ব নিয়ে আলোচনা।",
+      "en": "Demo speech - Discussion on youth role and leadership."
+    },
+    "body": {
+      "bn": "**[ডেমো - প্রোডাকশনে ব্যবহার নিষিদ্ধ]**\n\nতরুণ প্রজন্ম দেশের ভবিষ্যৎ। এই বক্তব্যে তাদের ভূমিকা নিয়ে আলোচনা।",
+      "en": "**[DEMO - DO NOT USE IN PRODUCTION]**\n\nYouth are the future. This speech discusses their role."
+    },
+    "videoId": "",
+    "image": "",
+    "pdfUrl": "",
+    "featured": false
+  }
+]

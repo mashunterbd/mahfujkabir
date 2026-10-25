@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'পৃষ্ঠা পাওয়া যায়নি | মাহফুজ কবির মুক্তা';
+---
+
+<BaseLayout title={title}>
+  <section style="min-height:60vh;display:grid;place-items:center;text-align:center">
+    <div class="wrap" style="max-width:600px">
+      <h1 style="font-size:clamp(80px,15vw,140px);color:var(--g8);line-height:1;margin-bottom:20px">৪০৪</h1>
+      <h2 style="font-size:clamp(24px,4vw,36px);color:var(--g8);margin-bottom:16px">পৃষ্ঠা পাওয়া যায়নি</h2>
+      <p style="color:var(--mut);margin-bottom:32px;font-size:18px">
+        দু:খিত, আপনি যে পৃষ্ঠাটি খুঁজছেন সেটি পাওয়া যাচ্ছে না।
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="/" class="btn btn-gold">হোম পেজে ফিরে যান</a>
+        <a href="/contact" class="btn btn-outline">যোগাযোগ করুন</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

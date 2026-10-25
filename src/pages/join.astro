@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/site.json';
+const title = 'স্বেচ্ছাসেবক হোন | মাহফুজ কবির মুক্তা';
+---
+<BaseLayout title={title}>
+  <section class="breadcrumbs"><div class="wrap"><nav aria-label="Breadcrumb"><ol><li><a href="/">হোম</a></li><li>স্বেচ্ছাসেবক</li></ol></nav></div></section>
+  <section><div class="wrap" style="max-width:680px"><div style="text-align:center;margin-bottom:40px"><span class="eyebrow">যুক্ত হোন</span><h1 class="h2" style="font-size:clamp(32px,5vw,48px)">স্বেচ্ছাসেবক হোন</h1><p class="lead" style="margin:16px auto">আমাদের লক্ষ্য বাস্তবায়নে অংশীদার হয়ে কাজ করুন।</p></div>
+  <form method="POST" action={siteData.forms.contact || '#'} style="background:var(--card);padding:36px;border-radius:var(--r);box-shadow:var(--sh)"><div style="display:flex;flex-direction:column;gap:20px">
+  <div><label for="name" style="display:block;font-weight:600;margin-bottom:8px">নাম *</label><input type="text" id="name" name="name" required style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font:inherit" /></div>
+  <div><label for="email" style="display:block;font-weight:600;margin-bottom:8px">ইমেইল *</label><input type="email" id="email" name="email" required style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font:inherit" /></div>
+  <div><label for="phone" style="display:block;font-weight:600;margin-bottom:8px">ফোন *</label><input type="tel" id="phone" name="phone" required style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font:inherit" /></div>
+  <div><label for="interest" style="display:block;font-weight:600;margin-bottom:8px">আগ্রহের ক্ষেত্র</label><textarea id="interest" name="interest" rows="4" style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font:inherit;resize:vertical"></textarea></div>
+  <button type="submit" class="btn btn-gold" style="justify-content:center">আবেদন জমা দিন</button></div></form></div></section>
+</BaseLayout>

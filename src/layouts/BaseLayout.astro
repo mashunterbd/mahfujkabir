@@ -1,0 +1,211 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import siteData from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'bn' | 'en';
+  type?: 'website' | 'article';
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+  };
+}
+
+const {
+  title = siteData.title.bn,
+  description = siteData.description.bn,
+  image = '/og-default.jpg',
+  lang = 'bn',
+  type = 'website',
+  article,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+// JSON-LD Structured Data
+const jsonLdWebsite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": siteData.name.bn,
+  "url": Astro.site?.href,
+  "description": siteData.description.bn,
+  "inLanguage": ["bn", "en"]
+};
+
+const jsonLdPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": siteData.name.bn,
+  "alternateName": siteData.name.en,
+  "jobTitle": siteData.currentPosition.bn,
+  "url": Astro.site?.href,
+  "sameAs": [
+    siteData.social.facebook,
+    siteData.social.youtube,
+    siteData.social.instagram,
+    siteData.social.tiktok
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+  
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content={lang === 'bn' ? 'bn_BD' : 'en_US'} />
+  <meta property="og:locale:alternate" content={lang === 'bn' ? 'en_US' : 'bn_BD'} />
+  <meta property="og:site_name" content={siteData.name.bn} />
+  
+  {article && (
+    <>
+      <meta property="article:published_time" content={article.publishedTime} />
+      <meta property="article:modified_time" content={article.modifiedTime} />
+      <meta property="article:author" content={article.author || siteData.name.bn} />
+    </>
+  )}
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={ogImage} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#0a3d2e" />
+  <meta name="msapplication-TileColor" content="#0a3d2e" />
+  
+  <!-- Fonts - Self-hosted will be added -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;600;800&family=Noto+Serif+Bengali:wght@600;700;800&family=Inter:wght@500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="style" href="/styles/global.css" />
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebsite)} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)} />
+  
+  <!-- Security Headers (via meta tags) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  
+  <!-- Analytics Placeholder -->
+  {siteData.analytics.plausible && (
+    <script defer data-domain={siteData.domain} src="https://plausible.io/js/script.js"></script>
+  )}
+</head>
+
+<body>
+  <!-- Skip to Content -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  <Header lang={lang} />
+  
+  <main id="main-content">
+    <slot />
+  </main>
+  
+  <Footer lang={lang} />
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label={lang === 'bn' ? 'উপরে যান' : 'Back to top'}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+  
+  <script>
+    // Reveal on scroll animation
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('on');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+    
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    
+    // Header scroll effect
+    const header = document.querySelector('header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+    }
+    
+    // Mobile menu toggle
+    const burger = document.querySelector('.burger');
+    const menu = document.querySelector('.menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+          menu.classList.remove('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

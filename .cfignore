@@ -1,0 +1,50 @@
+# Cloudflare Pages Ignore File
+# Files/directories listed here won't be uploaded to Cloudflare Pages
+
+# Source files (only dist/ is needed)
+src/
+scripts/
+
+# Development files
+node_modules/
+.git/
+.vscode/
+.idea/
+
+# Source images (optimized versions in public/images/)
+src/images-source/
+images/
+
+# Documentation
+README.md
+CONTENT-TODO.md
+DEPLOYMENT.md
+TASK-*.md
+LOGO-MAPPING.md
+
+# Config files
+.gitignore
+.cfignore
+.editorconfig
+.prettierrc
+tsconfig.json
+astro.config.mjs
+package.json
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.astro/

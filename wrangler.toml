@@ -1,0 +1,20 @@
+# Wrangler Configuration for Cloudflare Pages
+# Used for manual deployment via Wrangler CLI
+
+name = "mahfujkabir"
+compatibility_date = "2024-10-24"
+
+[site]
+bucket = "./dist"
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+# Production branch
+[env.production]
+name = "mahfujkabir"
+route = "mahfujkabir.com/*"
+
+# Preview environment (optional)
+[env.preview]
+route = "mahfujkabir.pages.dev/*"

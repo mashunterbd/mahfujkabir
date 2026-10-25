@@ -1,0 +1,27 @@
+{
+  "main": [
+    { "label": { "bn": "পরিচিতি", "en": "About" }, "href": "/about" },
+    { "label": { "bn": "লক্ষ্য ও পরিকল্পনা", "en": "Vision" }, "href": "/vision" },
+    { "label": { "bn": "উদ্যোগ", "en": "Initiatives" }, "href": "/initiatives" },
+    { "label": { "bn": "সংবাদ", "en": "News" }, "href": "/news" },
+    { "label": { "bn": "সোশ্যাল মিডিয়া", "en": "Social Media" }, "href": "/social" },
+    { "label": { "bn": "গ্যালারি", "en": "Gallery" }, "href": "/gallery" },
+    { "label": { "bn": "যোগাযোগ", "en": "Contact" }, "href": "/contact" }
+  ],
+  "footer": {
+    "quickLinks": [
+      { "label": { "bn": "পরিচিতি", "en": "About" }, "href": "/about" },
+      { "label": { "bn": "লক্ষ্য ও পরিকল্পনা", "en": "Vision" }, "href": "/vision" },
+      { "label": { "bn": "উদ্যোগ", "en": "Initiatives" }, "href": "/initiatives" },
+      { "label": { "bn": "সোশ্যাল মিডিয়া", "en": "Social Media" }, "href": "/social" },
+      { "label": { "bn": "গ্যালারি", "en": "Gallery" }, "href": "/gallery" }
+    ],
+    "support": [
+      { "label": { "bn": "স্বেচ্ছাসেবক", "en": "Volunteer" }, "href": "/join" },
+      { "label": { "bn": "প্রেস কিট", "en": "Press Kit" }, "href": "/press" },
+      { "label": { "bn": "যোগাযোগ", "en": "Contact" }, "href": "/contact" },
+      { "label": { "bn": "গোপনীয়তা নীতি", "en": "Privacy Policy" }, "href": "/privacy" },
+      { "label": { "bn": "শর্তাবলী", "en": "Terms" }, "href": "/terms" }
+    ]
+  }
+}

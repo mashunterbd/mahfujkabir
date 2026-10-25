@@ -1,0 +1,199 @@
+[
+  {
+    "id": 1,
+    "order": 1,
+    "slug": "pm-tarique-rahman-three-division-tour",
+    "title": {
+      "bn": "একদিনে তিন বিভাগ সফর প্রধানমন্ত্রী তারেক রহমানের।",
+      "en": "PM Tarique Rahman tours three divisions in one day"
+    },
+    "excerpt": {
+      "bn": "প্রধানমন্ত্রী তারেক রহমান একদিনে তিন বিভাগ সফর করেছেন।",
+      "en": "Prime Minister Tarique Rahman toured three divisions in one day"
+    },
+    "category": {
+      "bn": "জাতীয় সংবাদ",
+      "en": "National News"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/v/1FH1dzMScF/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "news-1.jpg",
+    "imageAlt": {
+      "bn": "প্রধানমন্ত্রী তারেক রহমানের সফর",
+      "en": "PM Tarique Rahman's tour"
+    },
+    "featured": true
+  },
+  {
+    "id": 2,
+    "order": 2,
+    "slug": "ishraque-hossain-mayor-city-problems",
+    "title": {
+      "bn": "মেয়র কে হবেন, তার চেয়ে নগরীর সমস্যার সমাধান জরুরি।",
+      "en": "Solving city problems is more urgent than who becomes mayor"
+    },
+    "excerpt": {
+      "bn": "মেয়র কে হবেন, তার চেয়ে নগরীর সমস্যার সমাধান জরুরি। —ইশরাক হোসেন, এমপি",
+      "en": "Solving city problems is more urgent than who becomes mayor. —Ishraque Hossain, MP"
+    },
+    "attribution": {
+      "bn": "—ইশরাক হোসেন, এমপি",
+      "en": "—Ishraque Hossain, MP"
+    },
+    "category": {
+      "bn": "ঢাকা-০৬ / বক্তব্য",
+      "en": "Dhaka-06 / Statement"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/v/14zjdrVUoFR/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "news-2.jpg",
+    "imageAlt": {
+      "bn": "ইশরাক হোসেন এমপি বক্তব্য রাখছেন",
+      "en": "MP Ishraque Hossain speaking"
+    },
+    "featured": false
+  },
+  {
+    "id": 3,
+    "order": 3,
+    "slug": "drug-free-bangladesh-no-compromise",
+    "title": {
+      "bn": "মাদকমুক্ত বাংলাদেশ গড়তে কোনো আপস নয়।",
+      "en": "No compromise in building a drug-free Bangladesh"
+    },
+    "excerpt": {
+      "bn": "মাদকমুক্ত বাংলাদেশ গড়তে কোনো আপস নয়।",
+      "en": "No compromise in building a drug-free Bangladesh"
+    },
+    "category": {
+      "bn": "সামাজিক বার্তা",
+      "en": "Social Message"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/r/1HqxN3JhPE/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "news-3.jpg",
+    "imageAlt": {
+      "bn": "মাদকবিরোধী প্রচারণা",
+      "en": "Anti-drug campaign"
+    },
+    "featured": false,
+    "note": "CONFIRM: Speaker/attribution not provided by owner"
+  },
+  {
+    "id": 4,
+    "order": 4,
+    "slug": "pm-rajshahi-rally-sugarcane-incentive",
+    "title": {
+      "bn": "প্রধানমন্ত্রী তারেক রহমানের রাজশাহীর মাদ্রাসা মাঠে জনসভা ও আখচাষিদের প্রণোদনা বিতরণ কর্মসূচির উদ্বোধন",
+      "en": "PM Tarique Rahman's rally at Rajshahi Madrasa Ground and inauguration of sugarcane farmers' incentive distribution program"
+    },
+    "excerpt": {
+      "bn": "বিএনপি চেয়ারম্যান ও গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের মাননীয় প্রধানমন্ত্রী তারেক রহমান রাজশাহীর ঐতিহাসিক মাদ্রাসা মাঠে আয়োজিত জনসভায় প্রধান অতিথি হিসেবে বক্তব্য দেন এবং আখচাষিদের মাঝে প্রণোদনার অর্থ বিতরণ কর্মসূচির উদ্বোধন করেন।",
+      "en": "BNP Chairman and Hon'ble Prime Minister of the People's Republic of Bangladesh Tarique Rahman spoke as chief guest at a rally at the historic Madrasa Ground in Rajshahi and inaugurated the incentive distribution program for sugarcane farmers."
+    },
+    "category": {
+      "bn": "জাতীয় সংবাদ",
+      "en": "National News"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/v/19ANFw7vNs/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "gallery-1.jpg",
+    "imageAlt": {
+      "bn": "রাজশাহী জনসভা",
+      "en": "Rajshahi public rally"
+    },
+    "featured": false
+  },
+  {
+    "id": 5,
+    "order": 5,
+    "slug": "pm-rajshahi-durga-puja-visit",
+    "title": {
+      "bn": "রাজশাহী ধর্মসভা পূজামণ্ডপ পরিদর্শন করলেন প্রধানমন্ত্রী",
+      "en": "Prime Minister visits Rajshahi Dharmasabha Puja Mandap"
+    },
+    "excerpt": {
+      "bn": "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের মাননীয় প্রধানমন্ত্রী তারেক রহমান শারদীয় দুর্গাপূজা উপলক্ষ্যে রাজশাহী ধর্মসভা পূজামণ্ডপ পরিদর্শন ও সনাতন ধর্মাবলম্বীদের সঙ্গে শুভেচ্ছা বিনিময় করেন।",
+      "en": "Hon'ble Prime Minister of the People's Republic of Bangladesh Tarique Rahman visited Rajshahi Dharmasabha Puja Mandap on the occasion of Sharadiya Durga Puja and exchanged greetings with Sanatan religious followers."
+    },
+    "category": {
+      "bn": "জাতীয় সংবাদ",
+      "en": "National News"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/v/19quevT6mT/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "gallery-2.jpg",
+    "imageAlt": {
+      "bn": "পূজামণ্ডপ পরিদর্শন",
+      "en": "Puja mandap visit"
+    },
+    "featured": false
+  },
+  {
+    "id": 6,
+    "order": 6,
+    "slug": "ishraque-hossain-sutrapur-puja-visit",
+    "title": {
+      "bn": "ঢাকা-০৬ আসনের সূত্রাপুরে পূজামণ্ডপ পরিদর্শনে ইশরাক হোসেন এমপি",
+      "en": "MP Ishraque Hossain visits puja mandaps in Sutrapur, Dhaka-06"
+    },
+    "excerpt": {
+      "bn": "ঢাকা-০৬ আসনের সূত্রাপুর থানাধীন বিভিন্ন পূজা মণ্ডপ পরিদর্শন এবং সার্বিক বিষয়ে খোঁজখবর নেন ইশরাক হোসেন, এমপি।",
+      "en": "MP Ishraque Hossain visited various puja mandaps under Sutrapur police station in Dhaka-06 constituency and inquired about overall matters."
+    },
+    "category": {
+      "bn": "ঢাকা-০৬",
+      "en": "Dhaka-06"
+    },
+    "type": "video",
+    "source": {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/v/1JkKQbyPP1/",
+      "label": {
+        "bn": "ফেসবুক ভিডিও",
+        "en": "Facebook Video"
+      }
+    },
+    "image": "news-4.jpg",
+    "imageAlt": {
+      "bn": "ইশরাক হোসেন এমপি পূজামণ্ডপ পরিদর্শন করছেন",
+      "en": "MP Ishraque Hossain visiting puja mandap"
+    },
+    "featured": false
+  }
+]

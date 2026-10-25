@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'লক্ষ্য ও পরিকল্পনা | মাহফুজ কবির মুক্তা';
+const description = 'মাহফুজ কবির মুক্তার দৃষ্টিভঙ্গি, লক্ষ্য এবং ভবিষ্যৎ পরিকল্পনা।';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>লক্ষ্য ও পরিকল্পনা</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:880px">
+      <div style="text-align:center;margin-bottom:48px">
+        <span class="eyebrow">দৃষ্টিভঙ্গি</span>
+        <h1 class="h2" style="font-size:clamp(32px,5vw,48px)">লক্ষ্য ও পরিকল্পনা</h1>
+        <p class="lead" style="margin:16px auto 0">
+          একটি উন্নত, ডিজিটাল এবং অন্তর্ভুক্তিমূলক সমাজ গড়ার প্রতিশ্রুতি।
+        </p>
+      </div>
+
+      <!-- Vision Statement -->
+      <div class="rv" style="background:var(--card);padding:40px;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:48px">
+        <h2 style="font-size:28px;color:var(--g8);margin-bottom:20px">আমার দৃষ্টিভঙ্গি</h2>
+        <p style="font-size:18px;line-height:1.8;color:var(--mut)">
+          [মালিকের কাছ থেকে বিস্তারিত দৃষ্টিভঙ্গি বিবরণ প্রয়োজন। এখানে তাঁর মূল লক্ষ্য, 
+          মূল্যবোধ এবং সমাজের জন্য তাঁর স্বপ্ন সম্পর্কে বিস্তারিত তথ্য থাকবে।]
+        </p>
+      </div>
+
+      <!-- Focus Areas -->
+      <div style="margin-bottom:48px">
+        <h2 class="eyebrow" style="margin-bottom:28px">মূল কর্মক্ষেত্র</h2>
+        
+        <div id="technology" class="pc rv" style="margin-bottom:32px">
+          <div class="pc-img">
+            <img src="/images/pledge-1.jpg" alt="তথ্য ও প্রযুক্তি" width="880" height="300" loading="lazy" />
+          </div>
+          <div class="b" style="padding:32px">
+            <h3 style="font-size:26px">তথ্য ও প্রযুক্তি</h3>
+            <p style="font-size:17px">
+              ডিজিটাল বাংলাদেশ গড়ার লক্ষ্যে তথ্যপ্রযুক্তির ব্যবহার বৃদ্ধি এবং ডিজিটাল সাক্ষরতা প্রসারে কাজ করছি।
+            </p>
+            <p style="font-size:17px">
+              [মালিকের নির্দিষ্ট উদ্যোগ, প্রকল্প এবং ভবিষ্যৎ পরিকল্পনা এখানে যুক্ত করতে হবে]
+            </p>
+          </div>
+        </div>
+
+        <div id="youth" class="pc rv" style="margin-bottom:32px">
+          <div class="pc-img">
+            <img src="/images/pledge-2.jpg" alt="তরুণ ও যুব উন্নয়ন" width="880" height="300" loading="lazy" />
+          </div>
+          <div class="b" style="padding:32px">
+            <h3 style="font-size:26px">তরুণ ও যুব উন্নয়ন</h3>
+            <p style="font-size:17px">
+              তরুণদের দক্ষতা উন্নয়ন, নেতৃত্ব বিকাশ এবং কর্মসংস্থান সৃষ্টিতে ভূমিকা রাখার প্রতিশ্রুতি।
+            </p>
+            <p style="font-size:17px">
+              [মালিকের যুব উন্নয়ন সম্পর্কিত কর্মসূচি এবং পরিকল্পনা]
+            </p>
+          </div>
+        </div>
+
+        <div id="liberation" class="pc rv">
+          <div class="pc-img">
+            <img src="/images/pledge-3.jpg" alt="মুক্তিযুদ্ধের চেতনা" width="880" height="300" loading="lazy" />
+          </div>
+          <div class="b" style="padding:32px">
+            <h3 style="font-size:26px">মুক্তিযুদ্ধের চেতনা</h3>
+            <p style="font-size:17px">
+              মুক্তিযুদ্ধের ইতিহাস সংরক্ষণ, চেতনা প্রচার এবং নতুন প্রজন্মের কাছে তা পৌঁছে দেওয়া।
+            </p>
+            <p style="font-size:17px">
+              [এই বিষয়ে মালিকের নির্দিষ্ট কার্যক্রম এবং ভবিষ্যৎ পরিকল্পনা]
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div style="background:var(--g8);color:#fff;padding:48px;border-radius:var(--r);text-align:center">
+        <h2 style="font-size:clamp(26px,4vw,36px);margin-bottom:16px">এই যাত্রায় যুক্ত হোন</h2>
+        <p style="color:#d3e4dc;max-width:600px;margin:0 auto 28px;font-size:17px">
+          আপনিও আমাদের লক্ষ্য বাস্তবায়নে অংশীদার হতে পারেন। স্বেচ্ছাসেবক হিসেবে যুক্ত হোন।
+        </p>
+        <a href="/join" class="btn btn-gold">স্বেচ্ছাসেবক হোন</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

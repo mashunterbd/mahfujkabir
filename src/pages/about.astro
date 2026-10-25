@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import aboutData from '../data/about.json';
+import timeline from '../data/timeline.json';
+
+const title = 'পরিচিতি | মাহফুজ কবির মুক্তা';
+const description = 'মাহফুজ কবির মুক্তার বিস্তারিত পরিচিতি, শিক্ষা, কর্মজীবন এবং অবদান সম্পর্কে জানুন।';
+
+// Get first 5 timeline entries for "এক নজরে" section (all current roles)
+const glanceItems = timeline.filter(item => item.current);
+---
+
+<BaseLayout title={title} description={description} image="/og-about.jpg">
+  <!-- Breadcrumbs -->
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>পরিচিতি</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section style="padding-top:40px">
+    <div class="wrap about">
+      <div class="about-img rv">
+        <img 
+          src={`/images/${aboutData.image.main}`}
+          alt={aboutData.image.alt.bn}
+          width="640"
+          height="853"
+          loading="eager"
+        />
+      </div>
+      <div class="rv">
+        <span class="eyebrow">{aboutData.eyebrow.bn}</span>
+        <h1 class="h2" style="font-size:clamp(32px,5vw,48px)">{aboutData.name.bn}</h1>
+        <p style="font-size:18px;color:var(--g6);margin-bottom:24px">
+          {aboutData.subtitle.bn}
+        </p>
+        
+        {aboutData.paragraphs.map(para => (
+          <p>{para.bn}</p>
+        ))}
+        
+        <!-- Slogan -->
+        <div style="margin:32px 0;padding:24px 28px;border-left:4px solid var(--gold);background:white;border-radius:8px;box-shadow:0 2px 12px rgba(10,61,46,0.06)">
+          <p style="font:italic 700 20px var(--font-heading);color:var(--g8);margin-bottom:12px;line-height:1.6">
+            "{aboutData.slogan.bn}"
+          </p>
+          <footer style="font-size:15px;color:var(--g6);font-weight:600">
+            {aboutData.slogan.attribution.bn}
+          </footer>
+        </div>
+        
+        <!-- Milestones -->
+        <div style="margin-top:32px">
+          <h3 style="font-size:20px;color:var(--g8);margin-bottom:16px">মূল মাইলফলক</h3>
+          <div class="stats">
+            {aboutData.milestones.map(milestone => (
+              <div>
+                <b>{milestone.year}</b>
+                <small>{milestone.label.bn}</small>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-gold" href="#journey">কর্মযাত্রা দেখুন</a>
+          <a class="btn btn-line-dark" href="/contact">যোগাযোগ করুন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- এক নজরে Section -->
+  <section style="background:var(--cream);padding:60px 0">
+    <div class="wrap">
+      <span class="eyebrow">এক নজরে</span>
+      <h2 class="h2">বর্তমান দায়িত্ব</h2>
+      <p class="lead">বর্তমানে মাহফুজ কবির মুক্তা যে প্রতিষ্ঠান ও সংগঠনগুলোতে সক্রিয় রয়েছেন।</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px">
+        {glanceItems.map(item => (
+          <div class="pc rv" style="cursor:default">
+            <div class="b" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px">
+              {item.logo && (
+                <div style="width:72px;height:72px;border-radius:50%;background:white;border:3px solid var(--gold);box-shadow:0 4px 12px rgba(10,61,46,0.12);display:flex;align-items:center;justify-content:center;padding:10px">
+                  <img 
+                    src={`/images/logos/${item.logo}`}
+                    alt={item.logoAlt.bn}
+                    class="glance-badge"
+                    width="72"
+                    height="72"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div>
+                <h3 style="font-size:18px;margin-bottom:8px">{item.title.bn}</h3>
+                <p style="font-size:14px;color:var(--mut);margin-bottom:6px">{item.organization.bn}</p>
+                <p style="font-size:13px;color:var(--g5)">
+                  <time>{item.date.bn}</time>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Timeline -->
+  <section class="tl-bg" id="journey">
+    <div class="wrap">
+      <span class="eyebrow">কর্মযাত্রা</span>
+      <h2 class="h2">দায়িত্ব ও অবদানের পূর্ণ চিত্র</h2>
+      <p class="lead">সময়ের সাথে বিভিন্ন প্রতিষ্ঠান ও সংগঠনে দায়িত্ব পালনের বিস্তারিত।</p>
+      <div class="tl">
+        {timeline.map(item => (
+          <article class="rv">
+            <time>{item.date.bn}</time>
+            {item.logo && (
+              <img 
+                src={`/images/logos/${item.logo}`}
+                alt={item.logoAlt.bn}
+                class="tl-badge"
+                width="64"
+                height="64"
+                loading="lazy"
+              />
+            )}
+            <h3>{item.title.bn}</h3>
+            <p>{item.organization.bn}</p>
+            {item.note && (
+              <p style="font-size:13px;margin-top:8px;opacity:0.8">
+                <em>Note: {item.note}</em>
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Expertise -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">দক্ষতা ও অভিজ্ঞতা</span>
+      <h2 class="h2">বিশেষজ্ঞতার ক্ষেত্র</h2>
+      <div class="pgrid" style="margin-top:28px">
+        <div class="pc rv" style="cursor:default">
+          <div class="pc-img" style="background:linear-gradient(135deg,var(--g8),var(--g6));display:grid;place-items:center;color:var(--gold)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="b">
+            <h3>প্রেস ম্যানেজমেন্ট</h3>
+            <p>মিডিয়া সম্পর্ক, প্রেস বিজ্ঞপ্তি এবং যোগাযোগ কৌশল।</p>
+          </div>
+        </div>
+        
+        <div class="pc rv" style="cursor:default">
+          <div class="pc-img" style="background:linear-gradient(135deg,var(--g8),var(--g6));display:grid;place-items:center;color:var(--gold)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+              <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+              <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div class="b">
+            <h3>ডিজিটাল মিডিয়া</h3>
+            <p>অনলাইন কন্টেন্ট তৈরি এবং সোশ্যাল মিডিয়া কৌশল।</p>
+          </div>
+        </div>
+        
+        <div class="pc rv" style="cursor:default">
+          <div class="pc-img" style="background:linear-gradient(135deg,var(--g8),var(--g6));display:grid;place-items:center;color:var(--gold)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="b">
+            <h3>সাংগঠনিক কর্ম</h3>
+            <p>দল সংগঠন, নেতৃত্ব এবং সমন্বয়।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="quote">
+    <div class="wrap rv">
+      <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:20px">আমার সাথে যোগাযোগ করুন</h2>
+      <p style="color:#d3e4dc;max-width:640px;margin:0 auto 28px">
+        যেকোনো প্রশ্ন, পরামর্শ বা সহযোগিতার জন্য আমার সাথে যোগাযোগ করতে পারেন।
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-gold" href="/contact">যোগাযোগ করুন</a>
+        <a class="btn btn-line" href="/press">প্রেস কিট ডাউনলোড</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

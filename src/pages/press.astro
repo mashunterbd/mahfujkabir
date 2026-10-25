@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/site.json';
+const title = 'প্রেস কিট | মাহফুজ কবির মুক্তা';
+---
+<BaseLayout title={title}>
+  <section class="breadcrumbs"><div class="wrap"><nav><ol><li><a href="/">হোম</a></li><li>প্রেস কিট</li></ol></nav></div></section>
+  <section><div class="wrap" style="max-width:880px"><h1 class="h2">প্রেস ও মিডিয়া কিট</h1><p class="lead">সাংবাদিক এবং মিডিয়া পেশাদারদের জন্য সম্পদ।</p><div style="background:var(--card);padding:32px;border-radius:var(--r);margin-top:32px"><h3>ডাউনলোড করুন</h3><ul style="margin:16px 0;padding-left:24px"><li>অফিসিয়াল পোর্ট্রেট (উচ্চ রেজোলিউশন)</li><li>সংক্ষিপ্ত জীবনী (বাংলা ও ইংরেজি)</li><li>লোগো ফাইল</li></ul><p style="color:var(--mut);margin-top:20px">প্রেস ইনকোয়ারির জন্য: {siteData.email || '[EMAIL NEEDED]'}</p></div></div></section>
+</BaseLayout>

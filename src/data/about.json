@@ -1,0 +1,81 @@
+{
+  "eyebrow": {
+    "bn": "পরিচিতি",
+    "en": "About"
+  },
+  "name": {
+    "bn": "মাহফুজ কবির মুক্তা",
+    "en": "Mahfuz Kabir Mukta"
+  },
+  "subtitle": {
+    "bn": "প্রেস অফিসার, ইশরাক হোসেন এমপি ও সাবেক প্রতিমন্ত্রী, মুক্তিযুদ্ধ বিষয়ক মন্ত্রণালয়",
+    "en": "Press Officer to Ishraque Hossain MP & former State Minister, Ministry of Liberation War Affairs"
+  },
+  "paragraphs": [
+    {
+      "bn": "মাহফুজ কবির মুক্তা তথ্যপ্রযুক্তি, গণমাধ্যম ও সাংগঠনিক কার্যক্রমে দীর্ঘদিন ধরে সক্রিয় একজন কর্মী। বর্তমানে তিনি ইশরাক হোসেন এমপি ও সাবেক প্রতিমন্ত্রী, মুক্তিযুদ্ধ বিষয়ক মন্ত্রণালয়-এর প্রেস অফিসার হিসেবে দায়িত্ব পালন করছেন।",
+      "en": "Mahfuz Kabir Mukta is an activist who has long been active in information technology, media and organizational activities. He currently serves as Press Officer to Ishraque Hossain MP and former State Minister, Ministry of Liberation War Affairs."
+    },
+    {
+      "bn": "২০১২ সালের নভেম্বর থেকে বাংলাদেশ ন্যাশনালিস্ট পাবলিসিটি পার্টির সঙ্গে যুক্ত থেকে তিনি সাংগঠনিক কার্যক্রমে অংশ নিয়ে আসছেন।",
+      "en": "He has been participating in organizational activities associated with Bangladesh Nationalist Publicity Party since November 2012.",
+      "note": "SAFER VERSION USED - Pending owner confirmation of '3 years as Central Organizing Secretary' wording"
+    },
+    {
+      "bn": "২০১৮ সালের জুলাই থেকে ২০২৬ সালের জুলাই পর্যন্ত তিনি বাংলাদেশ জাতীয়তাবাদী দল (বিএনপি)-র তথ্য ও প্রযুক্তি দপ্তরে ক্রু স্টাফ হিসেবে কাজ করেছেন। ২০২২ সালের ৫ জুলাই থেকে তিনি জিয়া স্মৃতি পাঠাগারের তথ্য ও প্রযুক্তি বিষয়ক সম্পাদকের দায়িত্বে আছেন।",
+      "en": "From July 2018 to July 2026, he worked as Crew Staff in the Information & Technology Office of Bangladesh Nationalist Party (BNP). Since July 5, 2022, he has been serving as Information & Technology Affairs Secretary of Zia Smriti Pathagar."
+    },
+    {
+      "bn": "২০২৪ সালের সেপ্টেম্বর থেকে তিনি ভিওডি বাংলা-র সহ-প্রতিষ্ঠাতা এবং ডিরেক্টর ও সিইও হিসেবে প্রতিষ্ঠানটির নেতৃত্বে রয়েছেন।",
+      "en": "Since September 2024, he has been leading VOD Bangla as Co-founder, Director & CEO."
+    }
+  ],
+  "slogan": {
+    "bn": "সাধারণ মানুষের শক্তিতেই বিএনপির রাজনীতি",
+    "en": "BNP's politics is rooted in the strength of common people",
+    "attribution": {
+      "bn": "— মাহফুজ কবির মুক্তা",
+      "en": "— Mahfuz Kabir Mukta"
+    }
+  },
+  "milestones": [
+    {
+      "year": "২০১২",
+      "label": {
+        "bn": "সাংগঠনিক পথচলা শুরু",
+        "en": "Started organizational journey"
+      }
+    },
+    {
+      "year": "২০১৮",
+      "label": {
+        "bn": "তথ্য ও প্রযুক্তি দপ্তরে যোগদান",
+        "en": "Joined IT department"
+      }
+    },
+    {
+      "year": "২০২৪",
+      "label": {
+        "bn": "ভিওডি বাংলা-র সহ-প্রতিষ্ঠা",
+        "en": "Co-founded VOD Bangla"
+      }
+    },
+    {
+      "year": "২০২৬",
+      "label": {
+        "bn": "প্রেস অফিসার, ইশরাক হোসেন এমপি",
+        "en": "Press Officer to Ishraque Hossain MP"
+      }
+    }
+  ],
+  "image": {
+    "main": "about-new.jpg",
+    "alt": {
+      "bn": "জনসমাবেশে মাহফুজ কবির মুক্তার কার্যক্রমের একটি মুহূর্ত",
+      "en": "A moment from Mahfuz Kabir Mukta's activities at a public gathering"
+    }
+  },
+  "education": [],
+  "vision": "",
+  "honours": []
+}

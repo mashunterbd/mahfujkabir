@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import speechesData from '../data/speeches.json';
+
+const title = 'বক্তব্য | মাহফুজ কবির মুক্তা';
+const description = 'মাহফুজ কবির মুক্তার বক্তব্য ও বক্তৃতা।';
+
+const hasSpeeches = speechesData && speechesData.length > 0;
+
+// Sort by date descending
+const speeches = hasSpeeches 
+  ? [...speechesData].sort((a, b) => new Date(b.date) - new Date(a.date))
+  : [];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>বক্তব্য</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:40px">
+        <span class="eyebrow">বক্তৃতা ও বক্তব্য</span>
+        <h1 class="h2" style="font-size:clamp(32px,5vw,48px)">বক্তব্য</h1>
+        <p class="lead" style="margin:16px auto 0">
+          বিভিন্ন অনুষ্ঠানে প্রদত্ত বক্তব্য এবং বক্তৃতা
+        </p>
+      </div>
+
+      <div class="video-grid">
+        {speeches.map(speech => (
+          <article class="video-card rv">
+            <div class="video-thumb">
+              <div class="yt-lite" data-id={speech.id} data-start={0}>
+                <img 
+                  src={speech.thumbnail}
+                  alt={speech.title.bn}
+                  width="480"
+                  height="270"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <button type="button" class="yt-play" aria-label="ভিডিও চালান">
+                  <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="video-info">
+              <span class="video-cat">{speech.category}</span>
+              <h3>{speech.title.bn}</h3>
+              <p>{speech.description.bn}</p>
+              <div style="display:flex;gap:16px;font-size:14px;color:#999;margin-top:8px">
+                <time>{new Date(speech.date).toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                {speech.venue?.bn && speech.venue.bn !== '[স্থান নিশ্চিত করতে হবে]' && (
+                  <span>• {speech.venue.bn}</span>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+  }
+  
+  .video-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(10, 61, 46, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(10, 61, 46, 0.15);
+  }
+  
+  .video-thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+  
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .yt-lite {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .yt-play:hover {
+    opacity: 1;
+  }
+  
+  .video-info {
+    padding: 20px;
+  }
+  
+  .video-cat {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--cream);
+    color: var(--deep-green);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  
+  .video-info h3 {
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--deep-green);
+    margin: 0 0 8px;
+  }
+  
+  .video-info p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
+
+<script>
+  // YouTube lite embed
+  document.querySelectorAll('.yt-lite').forEach(lite => {
+    lite.addEventListener('click', function() {
+      const videoId = this.dataset.id;
+      const startSeconds = this.dataset.start || 0;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=${startSeconds}`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
+      this.replaceWith(iframe);
+    });
+  });
+</script>

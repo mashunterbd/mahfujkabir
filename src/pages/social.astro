@@ -1,0 +1,993 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import socialData from '../data/social.json';
+import videosData from '../data/videos.json';
+import instagramPosts from '../data/instagram-posts.json';
+
+const title = 'সোশ্যাল মিডিয়া | মাহফুজ কবির মুক্তা';
+const description = 'মাহফুজ কবির মুক্তার সোশ্যাল মিডিয়া কার্যক্রম - YouTube, Facebook, Instagram এবং TikTok।';
+
+const { channels, vodBangla, facebookPagePlugin } = socialData;
+
+// Get YouTube videos (max 12 for initial grid)
+const youtubeVideos = videosData.filter(v => v.platform === 'youtube').slice(0, 12);
+
+// Generate Facebook Page Plugin embed URLs
+const generateFacebookPluginUrl = (pageId: string) => {
+  const params = new URLSearchParams({
+    href: `https://www.facebook.com/${pageId}`,
+    tabs: facebookPagePlugin.tabs,
+    width: String(facebookPagePlugin.width),
+    height: String(facebookPagePlugin.height),
+    small_header: String(facebookPagePlugin.smallHeader),
+    adapt_container_width: String(facebookPagePlugin.adaptContainerWidth),
+    hide_cover: String(facebookPagePlugin.hideCover),
+    show_facepile: String(facebookPagePlugin.showFacepile),
+    appId: '',
+    lang: facebookPagePlugin.locale
+  });
+  return `https://www.facebook.com/plugins/page.php?${params.toString()}`;
+};
+
+const fbPluginMain = generateFacebookPluginUrl(channels.facebook.pageId);
+const fbPluginVOD = generateFacebookPluginUrl(vodBangla.facebookPageId);
+
+// Format video duration (from seconds to MM:SS)
+const formatDuration = (seconds: number) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Breadcrumbs -->
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>সোশ্যাল মিডিয়া</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section style="padding-top:40px;padding-bottom:32px">
+    <div class="wrap" style="text-align:center;max-width:780px;margin:0 auto">
+      <span class="eyebrow">সোশ্যাল মিডিয়া</span>
+      <h1 class="h2">ডিজিটাল অ্যাক্টিভিটি</h1>
+      <p class="lead">
+        সামাজিক মাধ্যমে আমার কার্যক্রম, সাম্প্রতিক ভিডিও এবং আপডেট দেখুন। আমার সাথে সংযুক্ত থাকুন।
+      </p>
+    </div>
+
+    <!-- Follow Cards Grid -->
+    <div style="max-width:960px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+      <a href="#youtube" class="follow-card rv">
+        <div class="fc-icon" style="background:#ff0000">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </div>
+        <span>YouTube</span>
+      </a>
+
+      <a href="#facebook" class="follow-card rv">
+        <div class="fc-icon" style="background:#1877f2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+
+      <a href="#vodbangla" class="follow-card rv">
+        <div class="fc-icon" style="background:var(--g8)">
+          <img src="/images/logos/vodbangla.png" alt="VOD" style="width:28px;height:28px;object-fit:contain" />
+        </div>
+        <span>VOD Bangla</span>
+      </a>
+
+      <a href="#instagram-tiktok" class="follow-card rv">
+        <div class="fc-icon" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <span>Instagram & TikTok</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sticky Tabs -->
+  <div class="social-tabs">
+    <div class="wrap">
+      <div class="social-tabs-inner">
+        <a href="#youtube" class="social-tab active">YouTube</a>
+        <a href="#facebook" class="social-tab">Facebook</a>
+        <a href="#vodbangla" class="social-tab">VOD Bangla</a>
+        <a href="#instagram-tiktok" class="social-tab">Instagram & TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Section -->
+  <section class="social-section" id="youtube">
+    <div class="wrap">
+      <!-- Channel Header -->
+      <div class="yt-channel-header rv">
+        <div class="yt-ch-avatar">
+          <img src="/images/hero-portrait.jpg" alt="মাহফুজ কবির মুক্তা" />
+        </div>
+        <div class="yt-ch-info">
+          <h2>{channels.youtube.name.bn}</h2>
+          <p class="yt-ch-handle">{channels.youtube.handle}</p>
+          <p class="yt-ch-desc">{channels.youtube.description.bn}</p>
+          <div class="yt-ch-stats">
+            <span title="সাবস্ক্রাইবার">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              {youtubeVideos.length}+ ভিডিও
+            </span>
+            <span>•</span>
+            <a href="/videos" style="color:var(--g6);font-weight:600">সম্পূর্ণ লাইব্রেরি দেখুন →</a>
+          </div>
+        </div>
+        <div class="yt-ch-action">
+          <a href={channels.youtube.url + '?sub_confirmation=1'} target="_blank" rel="noopener noreferrer" class="btn-subscribe">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            সাবস্ক্রাইব করুন
+          </a>
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="yt-video-grid" style="margin-top:32px">
+        {youtubeVideos.map(video => (
+          <button 
+            class="yt-video-card rv" 
+            data-video-id={video.id}
+            data-start={video.startSeconds || 0}
+            aria-label={`ভিডিও চালান: ${video.title.bn}`}
+          >
+            <div class="yt-vc-thumb">
+              <img 
+                src={video.thumbnail} 
+                alt={video.title.bn}
+                loading="lazy"
+              />
+              <div class="yt-play-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#fff">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+              {video.aspectRatio === '9:16' && (
+                <div class="yt-badge yt-badge-short">Short</div>
+              )}
+            </div>
+            <div class="yt-vc-info">
+              <h3>{video.title.bn}</h3>
+              <p class="yt-vc-meta">
+                <span class="yt-vc-cat">{video.category}</span>
+                {video.publishedAt && (
+                  <>
+                    <span>•</span>
+                    <time>{new Date(video.publishedAt).toLocaleDateString('bn-BD', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+                  </>
+                )}
+              </p>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Facebook Section -->
+  <section class="social-section" id="facebook" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="social-header">
+        <div class="social-logo" style="background:#1877f2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#fff">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <div class="social-info">
+          <h2>Facebook পেজ</h2>
+          <p>সর্বশেষ পোস্ট, ছবি এবং সাংগঠনিক কার্যক্রম</p>
+        </div>
+      </div>
+
+      <!-- Dual Facebook Page Plugins -->
+      <div class="fb-plugin-grid">
+        <!-- Main Page -->
+        <div class="fb-plugin-wrapper">
+          <div class="embed-consent" data-platform="facebook-main">
+            <h3 style="font-size:18px;margin-bottom:12px;color:var(--g8)">মাহফুজ কবির মুক্তা</h3>
+            <p style="color:var(--mut);margin-bottom:16px;font-size:15px">
+              এই কন্টেন্ট Facebook থেকে লোড হয়
+            </p>
+            <button class="btn btn-gold" onclick="loadFacebookMain()">ফিড লোড করুন</button>
+            <a href={channels.facebook.url} target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;color:var(--g6);font-size:14px">
+              Facebook-এ দেখুন →
+            </a>
+          </div>
+          <div id="facebook-main-embed" style="display:none"></div>
+        </div>
+
+        <!-- VOD Bangla Page -->
+        <div class="fb-plugin-wrapper">
+          <div class="embed-consent" data-platform="facebook-vod">
+            <h3 style="font-size:18px;margin-bottom:12px;color:var(--g8)">ভিওডি বাংলা</h3>
+            <p style="color:var(--mut);margin-bottom:16px;font-size:15px">
+              এই কন্টেন্ট Facebook থেকে লোড হয়
+            </p>
+            <button class="btn btn-gold" onclick="loadFacebookVOD()">ফিড লোড করুন</button>
+            <a href={vodBangla.facebook} target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;color:var(--g6);font-size:14px">
+              Facebook-এ দেখুন →
+            </a>
+          </div>
+          <div id="facebook-vod-embed" style="display:none"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(232,168,58,0.08);border:2px solid rgba(232,168,58,0.2);border-radius:var(--r);padding:16px;margin-top:24px;text-align:center">
+        <p style="color:var(--g8);font-size:14px;margin:0">
+          💡 <strong>দ্রষ্টব্য:</strong> ফিড লোড করতে উপরের "ফিড লোড করুন" বাটনে ক্লিক করুন। আপনার পছন্দ সংরক্ষিত থাকবে।
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOD Bangla Section -->
+  <section class="social-section" id="vodbangla">
+    <div class="wrap">
+      <div class="social-header">
+        <div class="social-logo" style="background:white;border:2px solid var(--g8)">
+          <img src="/images/logos/vodbangla.png" alt="VOD Bangla" style="width:32px;height:32px;object-fit:contain" />
+        </div>
+        <div class="social-info">
+          <h2>ভিওডি বাংলা</h2>
+          <p>{vodBangla.description.bn}</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:28px">
+        <!-- Website Card -->
+        <div class="vod-card rv">
+          <div class="vod-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>অফিসিয়াল ওয়েবসাইট</h3>
+          <p style="color:var(--mut);font-size:15px;margin:12px 0 16px">
+            ভিওডি বাংলা-র সম্পূর্ণ কন্টেন্ট এবং তথ্য দেখুন।
+          </p>
+          <p class="vod-warning">⚠️ মালিকের নিশ্চিতকরণ প্রয়োজন</p>
+          <a href={vodBangla.website} target="_blank" rel="noopener noreferrer" class="btn btn-line-dark" style="width:100%;text-align:center;margin-top:16px">
+            ওয়েবসাইট ভিজিট করুন →
+          </a>
+        </div>
+
+        <!-- Facebook Page Card (already loaded above in Facebook section) -->
+        <div class="vod-card rv">
+          <div class="vod-card-icon" style="background:#1877f2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#fff">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <h3>Facebook পেজ</h3>
+          <p style="color:var(--mut);font-size:15px;margin:12px 0 16px">
+            ভিওডি বাংলা-র সর্বশেষ আপডেট এবং পোস্ট।
+          </p>
+          <p class="vod-warning">⚠️ মালিকের নিশ্চিতকরণ প্রয়োজন</p>
+          <button class="btn btn-line-dark" style="width:100%;text-align:center;margin-top:16px" onclick="document.querySelector('#facebook').scrollIntoView({behavior:'smooth'});setTimeout(() => loadFacebookVOD(), 500)">
+            পেজ ফিড দেখুন ↑
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram & TikTok Section -->
+  <section class="social-section" id="instagram-tiktok" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="social-header">
+        <div style="display:flex;gap:12px">
+          <div class="social-logo" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="social-logo" style="background:#000">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="social-info">
+          <h2>Instagram ও TikTok</h2>
+          <p>ফটো, শর্ট ভিডিও এবং ডেইলি আপডেট</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:28px">
+        <!-- Instagram Card -->
+        <div class="social-profile-card rv">
+          <div class="sp-header">
+            <div class="sp-avatar" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#fff">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 style="font-size:22px;margin-bottom:4px">{channels.instagram.handle}</h3>
+              <p style="color:var(--mut);font-size:15px">{instagramPosts.profile.displayName.bn}</p>
+            </div>
+          </div>
+          <p style="color:var(--mut);font-size:15px;margin:16px 0 20px">
+            ফটো, পোস্ট এবং স্টোরিজ দেখতে Instagram ফলো করুন।
+          </p>
+          <div style="background:rgba(232,168,58,0.08);border:1px solid rgba(232,168,58,0.2);border-radius:8px;padding:12px;margin-bottom:20px">
+            <p style="color:var(--g8);font-size:13px;margin:0">
+              📸 <strong>Instagram ফিড:</strong> মালিককে 6-9টি পোস্ট URL প্রদান করতে হবে অথবা Meta Graph API টোকেন।
+            </p>
+          </div>
+          <a href={channels.instagram.url} target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="width:100%;text-align:center">
+            Instagram ফলো করুন
+          </a>
+        </div>
+
+        <!-- TikTok Card -->
+        <div class="social-profile-card rv">
+          <div class="sp-header">
+            <div class="sp-avatar" style="background:#000">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#fff">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 style="font-size:22px;margin-bottom:4px">{channels.tiktok.handle}</h3>
+              <p style="color:var(--mut);font-size:15px">{channels.tiktok.name.bn}</p>
+            </div>
+          </div>
+          <p style="color:var(--mut);font-size:15px;margin:16px 0 20px">
+            শর্ট ভিডিও এবং লাইভ কন্টেন্ট দেখতে TikTok ফলো করুন।
+          </p>
+          <div style="background:rgba(232,168,58,0.08);border:1px solid rgba(232,168,58,0.2);border-radius:8px;padding:12px;margin-bottom:20px">
+            <p style="color:var(--g8);font-size:13px;margin:0">
+              🎵 <strong>TikTok ফিড:</strong> সম্পূর্ণ ফিড এম্বেড করা সম্ভব নয়। প্রোফাইল ভিজিট করুন।
+            </p>
+          </div>
+          <a href={channels.tiktok.url} target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="width:100%;text-align:center">
+            TikTok ফলো করুন
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Player Modal -->
+  <div id="video-modal" class="video-modal" style="display:none" role="dialog" aria-modal="true" aria-label="ভিডিও প্লেয়ার">
+    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" onclick="closeVideoModal()" aria-label="বন্ধ করুন">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="video-modal-player"></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Follow Cards */
+  .follow-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: white;
+    border-radius: var(--r);
+    box-shadow: var(--sh);
+    transition: all 0.3s var(--ease);
+    text-decoration: none;
+    color: var(--g8);
+  }
+
+  .follow-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+  }
+
+  .fc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .follow-card span {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  /* YouTube Channel Header */
+  .yt-channel-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: start;
+    background: white;
+    border-radius: var(--r);
+    padding: 24px;
+    box-shadow: var(--sh);
+  }
+
+  .yt-ch-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+  }
+
+  .yt-ch-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .yt-ch-info h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .yt-ch-handle {
+    color: var(--mut);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .yt-ch-desc {
+    color: var(--g8);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .yt-ch-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--mut);
+    font-size: 14px;
+  }
+
+  .yt-ch-stats svg {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .btn-subscribe {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #ff0000;
+    color: white;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+  }
+
+  .btn-subscribe:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+  }
+
+  /* YouTube Video Grid */
+  .yt-video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .yt-video-card {
+    background: white;
+    border-radius: var(--r);
+    overflow: hidden;
+    box-shadow: var(--sh);
+    transition: all 0.3s var(--ease);
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    padding: 0;
+    width: 100%;
+  }
+
+  .yt-video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+  }
+
+  .yt-vc-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--g8);
+  }
+
+  .yt-vc-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .yt-video-card:hover .yt-vc-thumb img {
+    transform: scale(1.05);
+  }
+
+  .yt-play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: all 0.3s var(--ease);
+  }
+
+  .yt-video-card:hover .yt-play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .yt-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+
+  .yt-badge-short {
+    background: rgba(255, 0, 0, 0.9);
+  }
+
+  .yt-vc-info {
+    padding: 16px;
+  }
+
+  .yt-vc-info h3 {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .yt-vc-meta {
+    color: var(--mut);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .yt-vc-cat {
+    background: var(--cream);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--g8);
+    font-weight: 600;
+  }
+
+  /* Facebook Plugin Grid */
+  .fb-plugin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+    justify-items: center;
+  }
+
+  .fb-plugin-wrapper {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .fb-plugin-wrapper iframe {
+    border-radius: 12px;
+    box-shadow: var(--sh);
+  }
+
+  /* VOD Cards */
+  .vod-card {
+    background: white;
+    border-radius: var(--r);
+    padding: 32px 24px;
+    box-shadow: var(--sh);
+    text-align: center;
+    transition: all 0.3s var(--ease);
+  }
+
+  .vod-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+  }
+
+  .vod-card-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--g8);
+  }
+
+  .vod-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .vod-warning {
+    font-size: 13px;
+    color: var(--gold);
+    background: rgba(232, 168, 58, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 0;
+  }
+
+  /* Social Profile Cards */
+  .social-profile-card {
+    background: white;
+    border-radius: var(--r);
+    padding: 28px;
+    box-shadow: var(--sh);
+    transition: all 0.3s var(--ease);
+  }
+
+  .social-profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+  }
+
+  .sp-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .sp-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Video Modal */
+  .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s var(--ease);
+  }
+
+  .video-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+  }
+
+  .video-modal-content {
+    position: relative;
+    width: 90vw;
+    max-width: 1280px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s var(--ease);
+    z-index: 2;
+  }
+
+  .video-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+
+  #video-modal-player {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  #video-modal-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .yt-channel-header {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .yt-ch-avatar {
+      margin: 0 auto;
+    }
+
+    .yt-ch-action {
+      display: flex;
+      justify-content: center;
+    }
+
+    .fb-plugin-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .yt-video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .yt-video-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .video-modal-content {
+      width: 95vw;
+    }
+
+    .fb-plugin-grid {
+      gap: 24px;
+    }
+  }
+</style>
+
+<script define:vars={{ fbPluginMain, fbPluginVOD }}>
+  // Consent Management
+  let consentGiven = localStorage.getItem('socialMediaConsent') === 'true';
+
+  // Load Facebook Main Page
+  function loadFacebookMain() {
+    const container = document.getElementById('facebook-main-embed');
+    const consent = document.querySelector('[data-platform="facebook-main"]');
+    
+    if (container && consent) {
+      consent.style.display = 'none';
+      container.style.display = 'block';
+      container.innerHTML = `
+        <iframe 
+          src="${fbPluginMain}"
+          title="মাহফুজ কবির মুক্তা - Facebook পেজ"
+          width="500"
+          height="720"
+          style="border:none;overflow:hidden;max-width:100%;border-radius:12px"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      `;
+      giveConsent();
+    }
+  }
+
+  // Load Facebook VOD Page
+  function loadFacebookVOD() {
+    const container = document.getElementById('facebook-vod-embed');
+    const consent = document.querySelector('[data-platform="facebook-vod"]');
+    
+    if (container && consent) {
+      consent.style.display = 'none';
+      container.style.display = 'block';
+      container.innerHTML = `
+        <iframe 
+          src="${fbPluginVOD}"
+          title="ভিওডি বাংলা - Facebook পেজ"
+          width="500"
+          height="720"
+          style="border:none;overflow:hidden;max-width:100%;border-radius:12px"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      `;
+      giveConsent();
+    }
+  }
+
+  // Give Consent
+  function giveConsent() {
+    consentGiven = true;
+    localStorage.setItem('socialMediaConsent', 'true');
+  }
+
+  // Video Player Modal
+  function openVideoModal(videoId, startSeconds = 0) {
+    const modal = document.getElementById('video-modal');
+    const player = document.getElementById('video-modal-player');
+    
+    if (modal && player) {
+      const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=${startSeconds}&rel=0`;
+      player.innerHTML = `
+        <iframe 
+          src="${embedUrl}"
+          title="YouTube ভিডিও প্লেয়ার"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      `;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      
+      // Focus trap
+      modal.focus();
+    }
+  }
+
+  function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const player = document.getElementById('video-modal-player');
+    
+    if (modal && player) {
+      modal.style.display = 'none';
+      player.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Video Card Click Handlers
+  document.querySelectorAll('.yt-video-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const videoId = card.getAttribute('data-video-id');
+      const startSeconds = parseInt(card.getAttribute('data-start') || '0');
+      if (videoId) {
+        openVideoModal(videoId, startSeconds);
+      }
+    });
+  });
+
+  // Modal Keyboard Controls
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeVideoModal();
+    }
+  });
+
+  // Tab Navigation
+  document.querySelectorAll('.social-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = tab.getAttribute('href');
+      if (target) {
+        document.querySelector(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Update active state
+        document.querySelectorAll('.social-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      }
+    });
+  });
+
+  // Update Active Tab on Scroll
+  const observerForTabs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        document.querySelectorAll('.social-tab').forEach(tab => {
+          tab.classList.remove('active');
+          if (tab.getAttribute('href') === `#${id}`) {
+            tab.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.social-section').forEach(section => {
+    observerForTabs.observe(section);
+  });
+
+  // Auto-load if consent already given
+  if (consentGiven) {
+    const loadOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const platform = entry.target.getAttribute('data-platform');
+          if (platform === 'facebook-main' && !document.getElementById('facebook-main-embed')?.innerHTML) {
+            loadFacebookMain();
+          } else if (platform === 'facebook-vod' && !document.getElementById('facebook-vod-embed')?.innerHTML) {
+            loadFacebookVOD();
+          }
+          loadOnScroll.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '100px' });
+
+    document.querySelectorAll('[data-platform^="facebook"]').forEach(el => {
+      loadOnScroll.observe(el);
+    });
+  }
+
+  // Make functions global
+  window.loadFacebookMain = loadFacebookMain;
+  window.loadFacebookVOD = loadFacebookVOD;
+  window.closeVideoModal = closeVideoModal;
+</script>
+</BaseLayout>

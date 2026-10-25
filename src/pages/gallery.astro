@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'গ্যালারি | মাহফুজ কবির মুক্তা';
+const description = 'মাহফুজ কবির মুক্তার কার্যক্রম, অনুষ্ঠান এবং বিভিন্ন মুহূর্তের ফটো গ্যালারি।';
+
+// Gallery images
+const images = Array.from({ length: 17 }, (_, i) => ({
+  id: i + 1,
+  src: `/images/gallery-${i + 1}.jpg`,
+  alt: `গ্যালারি ছবি ${i + 1}`,
+  category: i < 5 ? 'কার্যক্রম' : i < 10 ? 'অনুষ্ঠান' : 'সভা-সমাবেশ'
+}));
+
+const categories = ['সব', 'কার্যক্রম', 'অনুষ্ঠান', 'সভা-সমাবেশ'];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>গ্যালারি</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:40px">
+        <span class="eyebrow">ফটো গ্যালারি</span>
+        <h1 class="h2" style="font-size:clamp(32px,5vw,48px)">কার্যক্রম ও মুহূর্ত</h1>
+        <p class="lead" style="margin:16px auto 0">
+          বিভিন্ন কার্যক্রম, অনুষ্ঠান এবং গুরুত্বপূর্ণ মুহূর্তের ছবি।
+        </p>
+      </div>
+
+      <!-- Category Filter -->
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px" class="gallery-filters">
+        {categories.map((cat, i) => (
+          <button 
+            class={`btn ${i === 0 ? 'btn-gold' : 'btn-outline'} filter-btn`}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+        {images.map((img) => (
+          <div class="gallery-item rv" data-category={img.category}>
+            <img 
+              src={img.src}
+              alt={img.alt}
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);cursor:pointer;transition:transform 0.3s"
+              onclick={`openLightbox(${img.id - 1})`}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="বন্ধ করুন">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-prev" onclick="navigateLightbox(-1)" aria-label="আগের ছবি">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="lightbox-next" onclick="navigateLightbox(1)" aria-label="পরের ছবি">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+</BaseLayout>
+
+<style>
+  .gallery-item {
+    overflow: hidden;
+    border-radius: var(--r);
+    box-shadow: var(--sh);
+    aspect-ratio: 4 / 3;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.05);
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+  }
+
+  .lightbox-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .lightbox-prev {
+    left: 20px;
+  }
+
+  .lightbox-next {
+    right: 20px;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: var(--gold);
+    color: var(--g9);
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+
+  window.openLightbox = function(index) {
+    currentIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    if (lightbox && img) {
+      lightbox.classList.add('active');
+      img.src = images[currentIndex].src;
+      img.alt = images[currentIndex].alt;
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeLightbox = function(event) {
+    if (!event || event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  };
+
+  window.navigateLightbox = function(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    const img = document.getElementById('lightbox-img');
+    if (img) {
+      img.src = images[currentIndex].src;
+      img.alt = images[currentIndex].alt;
+    }
+  };
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.classList.contains('active')) {
+      if (e.key === 'Escape') window.closeLightbox();
+      if (e.key === 'ArrowLeft') window.navigateLightbox(-1);
+      if (e.key === 'ArrowRight') window.navigateLightbox(1);
+    }
+  });
+
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+      
+      filterButtons.forEach(b => {
+        b.classList.remove('btn-gold');
+        b.classList.add('btn-outline');
+      });
+      btn.classList.add('btn-gold');
+      btn.classList.remove('btn-outline');
+
+      galleryItems.forEach(item => {
+        if (category === 'সব' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

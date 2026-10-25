@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/site.json';
+import videos from '../data/videos.json';
+const title = 'ভিডিও | মাহফুজ কবির মুক্তা';
+
+const categories = [
+  { id: 'all', label: { bn: 'সব' } },
+  { id: 'নির্বাচনী প্রচারণা', label: { bn: 'নির্বাচনী প্রচারণা' } },
+  { id: 'বক্তব্য', label: { bn: 'বক্তব্য' } },
+  { id: 'সম্মাননা ও মিডিয়া', label: { bn: 'সম্মাননা ও মিডিয়া' } }
+];
+---
+<BaseLayout title={title}>
+  <section class="breadcrumbs">
+    <div class="wrap">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">হোম</a></li>
+          <li>ভিডিও</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+  
+  <section>
+    <div class="wrap" style="text-align:center">
+      <span class="eyebrow">ভিডিও গ্যালারি</span>
+      <h1 class="h2" style="font-size:clamp(32px,5vw,48px)">সাম্প্রতিক ভিডিও</h1>
+      <p class="lead" style="margin:16px auto 32px">
+        প্রচারণা, বক্তব্য এবং মিডিয়া কার্যক্রমের ভিডিও সংগ্রহ
+      </p>
+      
+      <!-- Category Filters -->
+      <div class="video-filters" style="margin-bottom:40px">
+        {categories.map(cat => (
+          <button 
+            class="filter-btn" 
+            data-category={cat.id}
+            aria-label={`${cat.label.bn} ভিডিও দেখুন`}
+          >
+            {cat.label.bn}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="video-grid">
+        {videos.map(video => (
+          <article 
+            class="video-card rv" 
+            data-category={video.category}
+            data-platform={video.platform}
+          >
+            <div class="video-thumb">
+              {video.platform === 'youtube' ? (
+                <div class="yt-lite" data-id={video.id} data-start={video.startSeconds || 0}>
+                  <img 
+                    src={video.thumbnail}
+                    alt={video.title.bn}
+                    width="480"
+                    height="270"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <button type="button" class="yt-play" aria-label="ভিডিও চালান">
+                    <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                  </button>
+                </div>
+              ) : (
+                <a 
+                  href={video.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="fb-link"
+                >
+                  <img 
+                    src={video.thumbnail}
+                    alt={video.title.bn}
+                    width="480"
+                    height="270"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="fb-badge">Facebook</span>
+                </a>
+              )}
+            </div>
+            <div class="video-info">
+              <span class="video-cat">{video.category}</span>
+              {video.isSupporterContent && (
+                <span class="video-badge">সমর্থকের বার্তা</span>
+              )}
+              <h3>{video.title.bn}</h3>
+              <p>{video.description.bn}</p>
+              <time>{new Date(video.publishedAt).toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <p style="margin-top:40px;text-align:center">
+        <a href={siteData.social.youtube} target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+          YouTube চ্যানেল দেখুন →
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .video-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--deep-green);
+    background: transparent;
+    color: var(--deep-green);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Anek Bangla', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--deep-green);
+    color: white;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+  }
+  
+  .video-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(10, 61, 46, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(10, 61, 46, 0.15);
+  }
+  
+  .video-card.hidden {
+    display: none;
+  }
+  
+  .video-thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+  
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .yt-lite {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .yt-play:hover {
+    opacity: 1;
+  }
+  
+  .fb-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .fb-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    background: #1877f2;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .video-info {
+    padding: 20px;
+  }
+  
+  .video-cat {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--cream);
+    color: var(--deep-green);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  
+  .video-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--gold);
+    color: white;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+  
+  .video-info h3 {
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--deep-green);
+    margin: 0 0 8px;
+  }
+  
+  .video-info p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0 0 12px;
+  }
+  
+  .video-info time {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
+
+<script>
+  // Category filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const videoCards = document.querySelectorAll('.video-card');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category;
+      
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filter videos
+      videoCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+  
+  // Set initial active state
+  filterBtns[0]?.classList.add('active');
+  
+  // YouTube lite embed
+  document.querySelectorAll('.yt-lite').forEach(lite => {
+    lite.addEventListener('click', function() {
+      const videoId = this.dataset.id;
+      const startSeconds = this.dataset.start || 0;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=${startSeconds}`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
+      this.replaceWith(iframe);
+    });
+  });
+</script>

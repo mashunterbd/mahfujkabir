@@ -1,0 +1,30 @@
+{
+  "channel": {
+    "id": "UCq8VK8sZ5y3KqBqGm_8jQqQ",
+    "handle": "@mahfujkabirbnp",
+    "title": {
+      "bn": "মাহফুজ কবির মুক্তা",
+      "en": "Mahfuz Kabir Mukta"
+    },
+    "description": {
+      "bn": "রাজনৈতিক বক্তব্য, নির্বাচনী প্রচারণা এবং সাংগঠনিক কার্যক্রমের ভিডিও।",
+      "en": "Political speeches, campaign activities, and organizational work."
+    },
+    "avatar": "/images/hero-portrait.jpg",
+    "stats": {
+      "subscriberCount": "PENDING_API",
+      "videoCount": "PENDING_API",
+      "viewCount": "PENDING_API",
+      "note": "Requires YouTube Data API v3 key - fallback to RSS feed if unavailable"
+    },
+    "subscribeUrl": "https://www.youtube.com/@mahfujkabirbnp?sub_confirmation=1"
+  },
+  "latestVideos": [],
+  "note": "Videos will be populated from videos.json (curated) or YouTube RSS feed",
+  "apiSettings": {
+    "enabled": false,
+    "apiKey": "ENV:YOUTUBE_API_KEY",
+    "cacheTime": 3600,
+    "maxResults": 12
+  }
+}

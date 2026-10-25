@@ -1,0 +1,55 @@
+{
+  "name": {
+    "bn": "মাহফুজ কবির মুক্তা",
+    "en": "Mahfuz Kabir Mukta"
+  },
+  "title": {
+    "bn": "মাহফুজ কবির মুক্তা | অফিসিয়াল ওয়েবসাইট",
+    "en": "Mahfuz Kabir Mukta | Official Website"
+  },
+  "description": {
+    "bn": "মাহফুজ কবির মুক্তা — প্রেস অফিসার, তথ্যপ্রযুক্তি সংগঠক ও ভিওডি বাংলা'র সহ-প্রতিষ্ঠাতা। অফিসিয়াল ওয়েবসাইট।",
+    "en": "Mahfuz Kabir Mukta — Press Officer, IT organizer, and co-founder of VOD Bangla. Official website."
+  },
+  "domain": "mahfujkabir.com",
+  "email": "info@mahfujkabir.com",
+  "phone": "+8801786091965",
+  "phoneBN": "+৮৮০১৭৮৬০৯১৯৬৫",
+  "address": {
+    "bn": "প্ল্যানার্স টাওয়ার, ১০ম তলা, স্যুট নং ৬, ৭\nবীর উত্তম সি আর দত্ত (সোনারগাঁও) রোড\nবাংলা মোটর, ঢাকা-১০০০",
+    "en": "Planners Tower, 10th Floor, Suite 6 & 7\nBir Uttam C R Datta (Sonargaon) Road\nBangla Motor, Dhaka-1000, Bangladesh"
+  },
+  "addressShort": {
+    "bn": "বাংলা মোটর, ঢাকা-১০০০",
+    "en": "Bangla Motor, Dhaka-1000"
+  },
+  "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Planners+Tower+Bangla+Motor+Dhaka",
+  "social": {
+    "facebook": "https://www.facebook.com/MahfujKabirMukta",
+    "youtube": "https://www.youtube.com/@mahfujkabirbnp",
+    "instagram": "https://www.instagram.com/muktabnp",
+    "tiktok": "https://www.tiktok.com/@mahfujkabirbnp"
+  },
+  "currentPosition": {
+    "bn": "প্রেস অফিসার, ইশরাক হোসেন এমপি ও সাবেক প্রতিমন্ত্রী, মুক্তিযুদ্ধ বিষয়ক মন্ত্রণালয়",
+    "en": "Press Officer to Ishraque Hossain MP and former State Minister, Ministry of Liberation War Affairs"
+  },
+  "slogan": {
+    "bn": "সাধারণ মানুষের শক্তিতেই বিএনপির রাজনীতি",
+    "en": "BNP's politics is rooted in the strength of common people",
+    "enNote": "Translation pending owner approval"
+  },
+  "attribution": {
+    "bn": "— মাহফুজ কবির মুক্তা",
+    "en": "— Mahfuz Kabir Mukta"
+  },
+  "analytics": {
+    "plausible": "",
+    "ga4": ""
+  },
+  "forms": {
+    "contact": "https://formspree.io/f/YOUR_FORM_ID",
+    "contactEmail": "info@mahfujkabir.com",
+    "newsletter": "[NEWSLETTER_ENDPOINT]"
+  }
+}

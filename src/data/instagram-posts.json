@@ -1,0 +1,34 @@
+{
+  "profile": {
+    "username": "muktabnp",
+    "url": "https://www.instagram.com/muktabnp",
+    "displayName": {
+      "bn": "মাহফুজ কবির মুক্তা",
+      "en": "Mahfuz Kabir Mukta"
+    },
+    "bio": {
+      "bn": "প্রেস অফিসার | ডিজিটাল অ্যাক্টিভিস্ট",
+      "en": "Press Officer | Digital Activist"
+    }
+  },
+  "featuredPosts": [
+    {
+      "id": "PENDING_OWNER",
+      "url": "",
+      "caption": "",
+      "note": "Owner should provide 6-9 post URLs to feature"
+    }
+  ],
+  "graphApiConfig": {
+    "enabled": false,
+    "accessToken": "ENV:INSTAGRAM_ACCESS_TOKEN",
+    "businessAccountId": "",
+    "note": "Requires Business/Creator account + Meta Graph API token"
+  },
+  "embedType": "curated",
+  "options": [
+    "curated - Owner provides post URLs, we embed individually",
+    "graphApi - Fetch latest posts via Meta Graph API at build time",
+    "widget - Use third-party widget service (SociableKIT/Elfsight)"
+  ]
+}

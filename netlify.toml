@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Redirects for clean URLs (optional, Astro handles this)
+[[redirects]]
+  from = "/*"
+  to = "/404"
+  status = 404
+
+# Form submission endpoint (if using Netlify Forms)
+# Uncomment and configure as needed
+# [[plugins]]
+#   package = "@netlify/plugin-forms"

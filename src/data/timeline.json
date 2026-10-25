@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "date": { "bn": "জুন ২০২৬ – বর্তমান", "en": "Jun 2026 – Present" },
+    "title": {
+      "bn": "প্রেস অফিসার",
+      "en": "Press Officer"
+    },
+    "organization": {
+      "bn": "ইশরাক হোসেন এমপি ও সাবেক প্রতিমন্ত্রী, মুক্তিযুদ্ধ বিষয়ক মন্ত্রণালয়",
+      "en": "Ishraque Hossain MP & former State Minister, Ministry of Liberation War Affairs, GoB"
+    },
+    "logo": "liberation-war-ministry.png",
+    "logoAlt": {
+      "bn": "মুক্তিযুদ্ধ বিষয়ক মন্ত্রণালয় লোগো",
+      "en": "Ministry of Liberation War Affairs logo"
+    },
+    "current": true
+  },
+  {
+    "id": 2,
+    "date": { "bn": "সেপ্টেম্বর ২০২৪ – বর্তমান", "en": "Sep 2024 – Present" },
+    "title": {
+      "bn": "ডিরেক্টর ও সিইও",
+      "en": "Director & CEO"
+    },
+    "organization": {
+      "bn": "ভিওডি বাংলা (সহ-প্রতিষ্ঠাতা)",
+      "en": "VOD Bangla (Co-founder)"
+    },
+    "logo": "vodbangla.png",
+    "logoAlt": {
+      "bn": "ভিওডি বাংলা লোগো",
+      "en": "VOD Bangla logo"
+    },
+    "current": true
+  },
+  {
+    "id": 3,
+    "date": { "bn": "৫ জুলাই ২০২২ – বর্তমান", "en": "Jul 5, 2022 – Present" },
+    "title": {
+      "bn": "তথ্য ও প্রযুক্তি বিষয়ক সম্পাদক",
+      "en": "Information & Technology Affairs Secretary"
+    },
+    "organization": {
+      "bn": "জিয়া স্মৃতি পাঠাগার",
+      "en": "Zia Smriti Pathagar"
+    },
+    "logo": "zia-smriti-pathagar.png",
+    "logoAlt": {
+      "bn": "জিয়া স্মৃতি পাঠাগার লোগো",
+      "en": "Zia Smriti Pathagar logo"
+    },
+    "current": true
+  },
+  {
+    "id": 4,
+    "date": { "bn": "জুলাই ২০১৮ – জুলাই ২০২৬", "en": "Jul 2018 – Jul 2026" },
+    "title": {
+      "bn": "ক্রু স্টাফ, তথ্য ও প্রযুক্তি দপ্তর",
+      "en": "Crew Staff, IT Office"
+    },
+    "organization": {
+      "bn": "বাংলাদেশ জাতীয়তাবাদী দল (বিএনপি)",
+      "en": "Bangladesh Nationalist Party (BNP)"
+    },
+    "logo": "bnp.png",
+    "logoAlt": {
+      "bn": "বিএনপি লোগো",
+      "en": "BNP logo"
+    },
+    "current": false
+  },
+  {
+    "id": 5,
+    "date": { "bn": "২০ নভেম্বর ২০১২ – বর্তমান", "en": "Nov 20, 2012 – Present" },
+    "title": {
+      "bn": "কেন্দ্রীয় সাংগঠনিক সম্পাদক (৩ বছর দায়িত্ব পালন)",
+      "en": "Central Organizing Secretary (served 3 years)"
+    },
+    "organization": {
+      "bn": "বাংলাদেশ ন্যাশনালিস্ট পাবলিসিটি পার্টি (বিএনপিপি)",
+      "en": "Bangladesh Nationalist Publicity Party (BNPP)"
+    },
+    "logo": "bnpp.png",
+    "logoAlt": {
+      "bn": "বিএনপিপি লোগো",
+      "en": "BNPP logo"
+    },
+    "current": true,
+    "note": "CONFIRM wording with owner regarding committee details"
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "channels": {
+    "youtube": {
+      "name": { "bn": "YouTube চ্যানেল", "en": "YouTube Channel" },
+      "handle": "@mahfujkabirbnp",
+      "url": "https://www.youtube.com/@mahfujkabirbnp",
+      "channelId": "UCq8VK8sZ5y3KqBqGm_8jQqQ",
+      "description": { "bn": "সাম্প্রতিক বক্তব্য, প্রচারণা এবং কার্যক্রম ভিডিও", "en": "Latest speeches, campaigns, and activity videos" }
+    },
+    "facebook": {
+      "name": { "bn": "Facebook পেজ", "en": "Facebook Page" },
+      "url": "https://www.facebook.com/MahfujKabirMukta",
+      "pageId": "MahfujKabirMukta",
+      "description": { "bn": "সর্বশেষ পোস্ট, ছবি এবং আপডেট", "en": "Latest posts, photos, and updates" }
+    },
+    "instagram": {
+      "name": { "bn": "Instagram", "en": "Instagram" },
+      "handle": "@muktabnp",
+      "url": "https://www.instagram.com/muktabnp",
+      "description": { "bn": "ফটো, পোস্ট এবং স্টোরিজ", "en": "Photos, posts, and stories" }
+    },
+    "tiktok": {
+      "name": { "bn": "TikTok", "en": "TikTok" },
+      "handle": "@mahfujkabirbnp",
+      "url": "https://www.tiktok.com/@mahfujkabirbnp",
+      "description": { "bn": "শর্ট ভিডিও এবং লাইভ কন্টেন্ট", "en": "Short videos and live content" }
+    }
+  },
+  "vodBangla": {
+    "website": "https://vodbangla.com",
+    "facebook": "https://www.facebook.com/vodbangla",
+    "facebookPageId": "vodbangla",
+    "note": "PENDING OWNER CONFIRMATION - URLs found via web search",
+    "description": {
+      "bn": "ভিওডি বাংলা - সহ-প্রতিষ্ঠাতা, ডিরেক্টর ও সিইও",
+      "en": "VOD Bangla - Co-founder, Director & CEO"
+    },
+    "allowsFraming": false,
+    "screenshotPath": ""
+  },
+  "facebookPagePlugin": {
+    "tabs": "timeline",
+    "width": 500,
+    "height": 720,
+    "smallHeader": false,
+    "hideCover": false,
+    "showFacepile": true,
+    "adaptContainerWidth": true,
+    "locale": "bn_IN"
+  },
+  "widgetServices": {
+    "considered": ["SociableKIT", "Elfsight", "EmbedSocial"],
+    "decision": "CUSTOM_BUILD",
+    "reasoning": "Better performance, no monthly fees, full control over design and privacy"
+  }
+}

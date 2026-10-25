@@ -1,0 +1,25 @@
+{
+  "name": "mahfujkabir-site",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "convert-jfif": "node scripts/convert-jfif-to-png.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "create-favicon": "node scripts/create-favicon.js",
+    "prebuild": "npm run optimize-images"
+  },
+  "dependencies": {
+    "astro": "^7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "sharp": "^0.35.5"
+  }
+}
